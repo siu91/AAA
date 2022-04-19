@@ -27,6 +27,8 @@
 
 ## COLA 分层架构 （todo）
 
+![cola](assets/cola-layer-arch.png)
+
 
 
 ## AAA （todo）
