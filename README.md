@@ -19,6 +19,12 @@
 
 ## DDD 分层架构 （todo）
 
+## 领域划分
+
+![image-20220420172910773](assets/image-20220420172910773.png)
+
+
+
 <img src="assets/ddd-layer-arch.webp" style="zoom:50%;" />
 
 ***`图片来源：《DDD 实战》`***
