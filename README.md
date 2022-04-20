@@ -17,11 +17,17 @@
 
 
 
-## DDD 分层架构 （todo）
+## DDD （todo）
 
-## 领域划分
+### 领域
 
-![image-20220420172910773](assets/image-20220420172910773.png)
+![domain](assets/domain.png)
+
+### 领域边界
+
+### 领域模型
+
+### 领域分层
 
 
 
