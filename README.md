@@ -20,6 +20,8 @@
 ## DDD （doing）
 
 > DDD 部分的知识来自《DDD 实战》的学习笔记整理。
+>
+> 例子大部分是使用原书中的案例，做了一些解读，脑图和架构图都是自己编辑的，使用请遵循![](assets/CC-BY-NC-ND.png)
 
 ### 领域
 
@@ -29,19 +31,13 @@
 
 ![bounded-context](assets/bounded-context.png)
 
-### 领域模型
+### 领域模型（doing）
 
-### 领域分层
-
-
-
-<img src="assets/ddd-layer-arch.webp" style="zoom:50%;" />
-
-***`图片来源：《DDD 实战》`***
+### 领域分层（todo）
 
 
 
-## COLA 分层架构 （todo）
+## COLA
 
 
 
