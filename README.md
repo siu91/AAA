@@ -17,13 +17,17 @@
 
 
 
-## DDD （todo）
+## DDD （doing）
+
+> DDD 部分的知识来自《DDD 实战》的学习笔记整理。
 
 ### 领域
 
 ![domain](assets/domain.png)
 
 ### 领域边界
+
+![bounded-context](assets/bounded-context.png)
 
 ### 领域模型
 
