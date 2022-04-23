@@ -33,6 +33,10 @@
 
 ### 领域模型（doing）
 
+#### 实体和值对象
+
+![entity-valueobeject](assets/entity-valueobeject.png)
+
 ### 领域分层（todo）
 
 
