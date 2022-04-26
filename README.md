@@ -37,6 +37,10 @@
 
 ![entity-valueobeject](assets/entity-valueobeject.png)
 
+#### 聚合
+
+![image-20220426151300801](assets/aggregate.png)
+
 ### 领域分层（todo）
 
 
