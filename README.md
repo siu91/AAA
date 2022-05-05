@@ -17,6 +17,10 @@
 
 
 
+## 为什么选择 DDD
+
+![](assets/why-DDD.svg)
+
 ## DDD （doing）
 
 > DDD 部分的知识来自《DDD 实战》的学习笔记整理。
