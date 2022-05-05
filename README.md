@@ -17,37 +17,47 @@
 
 
 
-## 为什么选择 DDD
+> DDD 部分的知识来自《DDD 实战》的学习笔记整理。
+>
+> 例子大部分是使用原书中的案例，做了一些解读，脑图和架构图都是自己编辑的.
+>
+> 使用请遵循![img](file:///Users/siu/Desktop/notebook/pages/tech/project/AAA/assets/CC-BY-NC-ND.png?lastModify=1651733352)
+
+
+
+
+
+## DDD
+
+### 为什么选择 DDD
 
 ![](assets/why-DDD.svg)
 
-## DDD （doing）
+### 领域（Domain）
 
-> DDD 部分的知识来自《DDD 实战》的学习笔记整理。
->
-> 例子大部分是使用原书中的案例，做了一些解读，脑图和架构图都是自己编辑的，使用请遵循![](assets/CC-BY-NC-ND.png)
+![domain](assets/domain.svg)
 
-### 领域
+### 领域边界（Bounded-Context）
 
-![domain](assets/domain.png)
+![bounded-context](assets/bounded-context.svg)
 
-### 领域边界
+### 领域模型（Domain Model）
 
-![bounded-context](assets/bounded-context.png)
-
-### 领域模型（doing）
-
-#### 实体和值对象
-
-![entity-valueobeject](assets/entity-valueobeject.png)
-
-#### 聚合
-
-![image-20220426151300801](assets/aggregate.png)
-
-### 领域分层（todo）
+![domain-model](assets/domain-model.svg)
 
 
+
+### 领域事件（Domain Event）
+
+![](assets/domain-event.svg)
+
+### 领域分层（Domain Layer）
+
+![](assets/DDD-layer-arch.svg)
+
+### 微服务设计和拆分的原则
+
+![](assets/微服务设计和拆分的原则.svg)
 
 ## COLA
 
