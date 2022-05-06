@@ -21,7 +21,7 @@
 >
 > 例子大部分是使用原书中的案例，做了一些解读，脑图和架构图都是自己编辑的.
 >
-> 使用请遵循![img](file:///Users/siu/Desktop/notebook/pages/tech/project/AAA/assets/CC-BY-NC-ND.png?lastModify=1651733352)
+> 使用请遵循![img](./assets/CC-BY-NC-ND.png)
 
 
 
