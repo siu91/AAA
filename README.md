@@ -5,7 +5,7 @@
 
 ## 前言
 
-前一段时间在整理后端的架构和选型，关于微服务设计这部分，也预留 DDD 的”作业“，但对于如何工程化落地 DDD 还没有一个清晰的思路，现有应用架构中的分层模型还是 MVC；关于领域划分，边界上下文、防腐层等 DDD 的经典理论抱有”赞同“，却又限制于没有实践指导的“工具”，故一直没有这部分的”行动“。
+前一段时间在整理后端的架构和选型，关于微服务设计这部分，也预留 DDD 的”作业“（其实从19年就开始关注在项目中用 DDD 进行业务领域建模），但对于如何工程化落地 DDD 还没有一个清晰的思路，现有应用架构中的分层模型还是 MVC；关于领域划分，边界上下文、防腐层等 DDD 的经典理论抱有”赞同“，却又限制于没有实践指导的“工具”，故一直没有这部分的”行动“。
 
 
 
@@ -13,7 +13,7 @@
 
 
 
-由此，并就想着开始准备自己组装一个 DDD 的落地实践，使用 COLA 的设计理念，融合微服务框架以及包含一些后端开发时会涉及的常用的库/组件（ORM、Flyawy、Skywaking、MapStruct、EventBus等），按照当前我个的理解把这个“脚手架”项目命名为 AAA（Application Architecture Archetype（应用架构原型）），希望能够真正落地实践 DDD，并用于实际项目指导目前团队的应用架构的演进。
+由此，并就想着开始准备自己组装一个 DDD 的落地实践，使用 COLA 的设计理念，融合微服务框架以及包含一些后端开发时会涉及的常用的库/组件（ORM、Flyawy、Skywaking、MapStruct、Event Source/Event Driven(Spring Event/Spring Cloud Stream/EventBus)等），按照当前我个的理解把这个“脚手架”项目命名为 AAA（Application Architecture Archetype（应用架构原型）），希望能够真正落地实践 DDD，并用于实际项目指导目前团队的应用架构的演进。
 
 
 
@@ -69,16 +69,110 @@
 
 ## AAA （todo）
 
+
+
+- [x] AAA 分层设计
+- [x] 确定领域（业务需求）
+- [x] DDD 战略设计：事件风暴、领域故事分析
+- [x] DDD 战术设计：提取领域对象和代码做基本映射
+- [x] DDD 战术设计：框架搭建、编码
+- [ ] 增加 flyway、MapStruct、领域事件（MQ、Spring Event、Spring Cloud Stream）、微服务框架（API网关、服务发现注册等）、服务网格、模版代码
+
+[Source code](https://github.com/siu91/cargo-tracker)
+
+# 
+
 ### AAA 分层设计
 
 ![](assets/AAA.svg)
 
-- [x] AAA 分层设计
-- [ ] 确定领域（业务需求）
-- [ ] DDD 战略设计：事件风暴、领域故事分析
-- [ ] DDD 战术设计：提取领域对象和代码做基本映射
-- [ ] DDD 战术设计：框架搭建、编码
-- [ ] 增加 flyway、MapStruct、领域事件（MQ）、微服务框架（API网关、服务发现注册等）、服务网格、模版代码
+### 案例
+
+选用 Evans 在领域驱动设计中提到的 Cargo Tracker 的案例。
+
+> 货物运输系统（Cargo Tracker Application）是领域驱动设计（DDD）的经典示例。Eric Evans（DDD之父）在他的书中引入了货物运输系统为示例，Eric这样描述该领域模型：
+>
+> 一个Cargo（货物）涉及多个Customer（客户，如托运人、收货人、付款人），每个Customer承担不同的角色；
+> Cargo的运送目标已指定，即Cargo有一个运送目标；
+> 由一系列满足Specification（规格）的Carrier Movement（运输动作）来完成运输目标；
+
+
+
+### User Story 和统一语言
+
+#### 简单的 User Story 分析
+
+```txt
+User Story:
+Mick（托运人）需要把2吨土豆从 A 地，送到他的客户 Jack（收货人） 所在的 B 地
+Mick 登录 Cargo 系统，预定了一个“货物运送”（起始地、目的地、交付时间、收货人信息、货物信息）
+Cargo 系统，接受到预定时，则开始订单的跟踪和规划航程（最佳路线）
+航程计划完成时，则开始装载货物、运输、物流跟踪、到达目的地卸载货物，通知 Mick 和 Jack （提货、电子发票等）。
+Mick/Jack 在下单之后即可以查询订单信息、跟踪订单运送进度，当查询到订单已可以提货或接收到通知即可提货。
+```
+
+#### 统一语言
+
+```txt
+1. 需求
+跟踪货物的主要处理部署；
+预约货物；
+货物到达某一处理步骤时自动发送发票。
+领域语言
+货物: cargo
+客户: customer
+规格: specification
+运输动作: carrier movement
+
+一个cargo(货物)涉及到多个customer(客户)，每个customer承担不同角色。
+cargo的运送目标已指定；
+由一系列满足specification(规格)的carrier movement(运输动作)来完成运送目标。
+上述类图中Customer包括托运人、收货人、快递员等角色。
+（都是我们软件要服务的客户）
+Handling Event可以细分为不同种类的事件（装货、卸货、提货…）
+
+区分Entity和Value Object
+看对象是必须被跟踪的实体还是仅表示一个基本值。
+
+Customer: Entity
+Cargo: Entity
+Handling Event和Carrier Movement: Entity
+Delivery History: Entity
+Delivery Specification: Value Object: 可替换，货物满足的规则只要等效即可，并不一定需要是某一个id的规则。
+Role: Value Object.
+```
+
+
+
+#### 领域/子域、限界上下文/微服务
+
+```txt
+预订微服务 booking：该服务负责与货物委托预订相关的所有操作，包括包裹预订、查询包裹明细、包裹行程制订等等，还有发布CargoBookedEvent和CargoRoutedEvent领域事件，以及订阅CargoHandledEvent事件消息等等。
+运输微服务routing：该服务负责与货物路线相关的所有操作，包括获取路线的行程、维护航线（Maintain Voyages）等等。
+跟踪微服务tracking：该服务负责与货物跟踪相关的所有操作，包括为货物分配运单号（TrackingNumber）、跟踪货物路线，还有订阅CargoRoutedEvent和CargoHandledEvent事件消息。
+装卸微服务handling：该服务负责与货物装卸相关的所有操作，包括注册装卸活动（Register Handling Activity）、查询装卸活动历史记录等等。
+```
+
+##### 领域事件分析
+
+![domain-event](assets/domain-event.png)
+
+
+
+### 领域建模到代码的分层
+
+![cargo-booking.png](assets/cargo-booking.png)
+
+- 1、adapter 层整理命名等沿用 COLA 中的分层，主要分为 M + N 个子 module
+  - M 通常只有1个（通常只会有一个调用协议和调用组件），上图代表外部微服务调用时引入 feignclient 这个接口包
+  - 适配的实现放在 adapter-xxx，如：adapter-web，adapter-mobile
+- 2、application 分为 api 接口层，和 impl 实现层
+  - api 中主要会暴露：服务的接口、dto 对象，以及微服务间的事件通信对象（DomainEvent）
+- 3、domian 层按聚合分包，也把聚合的仓储（repository）构建在这里：
+  - repository 在聚合中的好处是在容易随着业务的变化，当需要把聚合拆分成微服务或是业务的合并转移，代码的工程量会小很多
+  - 要注意的是 repository 还是要进行 acl 的处理
+- 4、infrastructure 主要包括 Event Source（event 包）、外部微服务调用（client 包）、数据库等访问（已经移到 domain聚合下的仓储）
+
 
 
 # ref
