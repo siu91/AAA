@@ -13,7 +13,7 @@
 
 
 
-由此，并就想着开始准备自己组装一个 DDD 的落地实践，使用 COLA 的设计理念，融合微服务框架以及包含一些后端开发时会涉及的常用的库/组件（ORM、Flyawy、Skywaking、MapStruct、Event Source/Event Driven(Spring Event/Spring Cloud Stream/EventBus)等），按照当前我个的理解把这个“脚手架”项目命名为 AAA（Application Architecture Archetype（应用架构原型）），希望能够真正落地实践 DDD，并用于实际项目指导目前团队的应用架构的演进。
+由此，并就想着开始准备自己“组装”一个 DDD 的落地实践：从理清 DDD 的重要理念和方法，找到 DDD 得落地的最佳实践；结合使用 COLA ，CQRS 的设计理念，融合微服务框架以及包含一些后端开发时会涉及的常用的库/组件（ORM、Flyawy、Skywaking、MapStruct、Event Source/Event Driven(Spring Event/Spring Cloud Stream/EventBus)等），按照当前我个的理解把这个“脚手架”项目命名为 AAA（Application Architecture Archetype（应用架构原型）），希望能够真正落地实践 DDD，并用于实际项目指导目前团队的应用架构的演进。
 
 
 
