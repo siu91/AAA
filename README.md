@@ -13,6 +13,7 @@
 
 
 
+
 > DDD 部分的知识来自《DDD 实战》的学习笔记整理。
 >
 > 例子大部分是使用原书中的案例，做了一些解读，脑图和架构图都是自己编辑的.
@@ -21,6 +22,23 @@
 
 
 
+
+## TODO LIST
+
+
+
+- [x] AAA 分层设计
+- [x] 确定领域（业务需求）
+- [x] DDD 战略设计：事件风暴、领域故事分析
+- [x] DDD 战术设计：提取领域对象和代码做基本映射
+- [x] DDD 战术设计：框架搭建、编码
+- [x] 增加 flyway、MapStruct、领域事件（MQ、Spring Event、Spring Cloud Stream）、微服务框架（API网关、服务发现注册等）、服务网格、模版代码
+- [ ] 内部团队分享沙龙：
+  - [x] 1.1  什么是领域
+  - [x] 1.2 如何划分微服务边界：定义领域的边界，限界上下文
+  - [x] 1.3 领域模型
+  - [x] 1.4 微服务间的解耦如何设计：领域事件，EDA，领域事件整体架构
+  - [ ] 1.5 DDD 分层架构以及相关的架构设计：CQRS、DDD 回顾总结
 
 
 ## DDD
@@ -61,18 +79,6 @@
 
 ![cola](assets/cola-layer-arch.png)
 
-
-
-## AAA （todo）
-
-
-
-- [x] AAA 分层设计
-- [x] 确定领域（业务需求）
-- [x] DDD 战略设计：事件风暴、领域故事分析
-- [x] DDD 战术设计：提取领域对象和代码做基本映射
-- [x] DDD 战术设计：框架搭建、编码
-- [ ] 增加 flyway、MapStruct、领域事件（MQ、Spring Event、Spring Cloud Stream）、微服务框架（API网关、服务发现注册等）、服务网格、模版代码
 
 [Source code](https://github.com/siu91/cargo-tracker)
 
