@@ -39,6 +39,8 @@
   - [x] 1.3 领域模型
   - [x] 1.4 微服务间的解耦如何设计：领域事件，EDA，领域事件整体架构
   - [ ] 1.5 DDD 分层架构以及相关的架构设计：CQRS、DDD 回顾总结
+- [x] [Source code](https://github.com/siu91/cargo-tracker)
+
 
 
 ## DDD
@@ -78,9 +80,6 @@
 
 
 ![cola](assets/cola-layer-arch.png)
-
-
-[Source code](https://github.com/siu91/cargo-tracker)
 
 # 
 
